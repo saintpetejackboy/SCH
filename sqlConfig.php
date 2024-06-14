@@ -1,5 +1,5 @@
 <?php
-include_once('/var/www/dbconn/tyrael.php');
+include_once('dbconn.php');
 
 // Function to check if a table exists
 function tableExists($pdo, $tableName) {

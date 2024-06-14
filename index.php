@@ -1,5 +1,5 @@
 <?php
-include_once('/var/www/dbconn/tyrael.php');
+include_once('dbconn.php');
 
 // Capture the JSON POST payload
 $input = file_get_contents('php://input');
@@ -293,4 +293,4 @@ foreach ($data['data']['documents'] as $document) {
 
 
 echo json_encode(["status" => "success", "message" => "Data processed successfully"]);
-?>
+

@@ -23,7 +23,7 @@ This project is designed to capture data from the Subcontractor Hub and store it
     ```
 
 3. Configure database connection:
-    - Replace the `tyrael.php` file in `/var/www/dbconn/` to match your database connection settings - feel free to replace with ENV file.
+    - Replace the `tyrael.php` file in `dbconn.php` with your $pdo-> initialization script or relevant environment variables. 
 
 4. Deploy the PHP script:
     - Place the PHP script in your web server's document root or a subdirectory as needed.
@@ -566,5 +566,3 @@ Contributions are welcome! Please open an issue or submit a pull request for any
 ## License
 Definitely not suspended, revoked or expired!
 ```
-
-Replace `https://github.com/saintpetejackboy/sch.git` with the actual URL of your GitHub repository.

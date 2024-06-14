@@ -1,5 +1,7 @@
 <?php
 $currentDate = date('Y-m-d H:i:s');
+$testURL = 'https://esd.quest/sch/'; 
+
 $payload = [
     "event" => "project.created",
     "data" => [
@@ -492,7 +494,7 @@ $payload = [
 
 
 // Initialize cURL
-$ch = curl_init('https://esd.quest/sch/');
+$ch = curl_init($testURL);
 
 // Set cURL options
 curl_setopt($ch, CURLOPT_POST, 1);

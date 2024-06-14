@@ -1,4 +1,3 @@
-```markdown
 # Subcontractor Hub Data Integration
 
 ## Project Overview

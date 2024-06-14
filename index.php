@@ -55,7 +55,7 @@ if ($projectId) {
             :module_total_panels, :inverter_name, :inverter_manufacturer, :inverter_quantity, :battery_name, :battery_manufacturer, 
             :battery_price, :battery_size_kwh, :battery_quantity, :annual_production, :finance_type, :contract_type, :finance_partner, 
             :finance_term_year, :finance_rate, :finance_escalator_rate, :finance_ppw, :finance_monthly_payment, :first_name, :last_name, 
-            :name, :email, :phone, owner_email, :proposal_url, :contract_signed_url, :system_size_kw, :system_size_w, :sales_representative_name, 
+            :name, :email, :phone, :owner_email, :proposal_url, :contract_signed_url, :system_size_kw, :system_size_w, :sales_representative_name, 
             :sales_representative_email
         )
     ");
@@ -293,4 +293,21 @@ foreach ($data['data']['documents'] as $document) {
 
 
 echo json_encode(["status" => "success", "message" => "Data processed successfully"]);
+
+// Send to Job Nimbus:
+
+// Initialize a cURL session
+$ch = curl_init();
+
+// Set the URL for the GET request
+curl_setopt($ch, CURLOPT_URL, "https://esd.quest/sch/jobnimbus/sendContact.php");
+
+// Set the option to not wait for the response
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+// Execute the cURL session
+curl_exec($ch);
+
+// Close the cURL session
+curl_close($ch);
 

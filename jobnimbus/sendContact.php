@@ -1,7 +1,7 @@
 <?php
 // This file is a mess further down as I wait for partners to clarify some fields.
 
-include('../dbconn.php');
+include_once('../dbconn.php');
 
 // Fetch the most recent project
 $query = "SELECT * FROM projects ORDER BY id DESC LIMIT 1";

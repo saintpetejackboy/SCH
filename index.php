@@ -34,7 +34,7 @@ if ($projectId) {
             finance_ppw = :finance_ppw, finance_monthly_payment = :finance_monthly_payment, first_name = :first_name, last_name = :last_name, 
             name = :name, email = :email, phone = :phone, owner_email = :owner_email, proposal_url = :proposal_url, 
             contract_signed_url = :contract_signed_url, system_size_kw = :system_size_kw, system_size_w = :system_size_w, 
-            sales_representative_name = :sales_representative_name, sales_representative_email = :sales_representative_email, debug - :debug 
+            sales_representative_name = :sales_representative_name, sales_representative_email = :sales_representative_email, debug = :debug 
         WHERE subhub_id = :subhub_id
     ");
 } else {

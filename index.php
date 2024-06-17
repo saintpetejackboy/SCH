@@ -34,7 +34,7 @@ if ($projectId) {
             finance_ppw = :finance_ppw, finance_monthly_payment = :finance_monthly_payment, first_name = :first_name, last_name = :last_name, 
             name = :name, email = :email, phone = :phone, owner_email = :owner_email, proposal_url = :proposal_url, 
             contract_signed_url = :contract_signed_url, system_size_kw = :system_size_kw, system_size_w = :system_size_w, 
-            sales_representative_name = :sales_representative_name, sales_representative_email = :sales_representative_email
+            sales_representative_name = :sales_representative_name, sales_representative_email = :sales_representative_email, debug - :debug 
         WHERE subhub_id = :subhub_id
     ");
 } else {
@@ -47,7 +47,7 @@ if ($projectId) {
             battery_price, battery_size_kwh, battery_quantity, annual_production, finance_type, contract_type, finance_partner, 
             finance_term_year, finance_rate, finance_escalator_rate, finance_ppw, finance_monthly_payment, first_name, last_name, 
             name, email, phone, owner_email, proposal_url, contract_signed_url, system_size_kw, system_size_w, sales_representative_name, 
-            sales_representative_email
+            sales_representative_email, debug
         ) VALUES (
             :event, :external_id, :job_type, :street, :city, :state, :county, :postal_code, :country, :territory, :latitude, :longitude, 
             :downpayment, :discounts_total, :base_system_cost, :battery_total, :adders_total, :dealer_fee, :annual_usage, :subhub_id, 
@@ -56,7 +56,7 @@ if ($projectId) {
             :battery_price, :battery_size_kwh, :battery_quantity, :annual_production, :finance_type, :contract_type, :finance_partner, 
             :finance_term_year, :finance_rate, :finance_escalator_rate, :finance_ppw, :finance_monthly_payment, :first_name, :last_name, 
             :name, :email, :phone, :owner_email, :proposal_url, :contract_signed_url, :system_size_kw, :system_size_w, :sales_representative_name, 
-            :sales_representative_email
+            :sales_representative_email, :debug
         )
     ");
 }
@@ -121,6 +121,8 @@ $params = [
     ':sales_representative_name' => $data['data']['sales_representative_name'] ?? null,
     ':sales_representative_email' => $data['data']['sales_representative_email'] ?? null
 ];
+
+$params[':debug'] = $input; // Store the entire JSON payload as a string
 
 $stmt->execute($params);
 
@@ -291,8 +293,8 @@ foreach ($data['data']['documents'] as $document) {
     }
 }
 
-
-echo json_encode(["status" => "success", "message" => "Data processed successfully"]);
+$response = ["status" => "success", "message" => "Data processed successfully", "payload" => $data];
+echo json_encode($response);
 
 // Send to Job Nimbus:
 
